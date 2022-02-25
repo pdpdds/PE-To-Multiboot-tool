@@ -7,7 +7,6 @@
 
 bool InsertKernelToImageFile(const char* kernel_name);
 
-
 using namespace std;
 struct MULTIBOOT_HEADER {
 	UINT32 magic;
@@ -82,6 +81,10 @@ int main(int argc, char** argv)
 		CloseHandle(hFile);
 		return TRUE;
 	}
+
+	if (file == 0)
+		return TRUE;
+
 	PIMAGE_DOS_HEADER DOS = (PIMAGE_DOS_HEADER)file;
 	PIMAGE_NT_HEADERS NT = (PIMAGE_NT_HEADERS)(file + DOS->e_lfanew);
 	if (NT->Signature != IMAGE_NT_SIGNATURE)
@@ -170,7 +173,6 @@ bool InsertKernelToImageFile(const char* kernel_name)
 
 	if (result != FR_OK)
 	{
-
 		printf("fat32 initialization fail : %d\n", result);
 		return false;
 	}
