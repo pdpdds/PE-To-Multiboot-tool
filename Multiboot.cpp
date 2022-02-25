@@ -3,6 +3,11 @@
 #include <string>
 #include <iostream>
 #include <Windows.h>
+#include "ff.h"
+
+bool InsertKernelToImageFile(const char* kernel_name);
+
+
 using namespace std;
 struct MULTIBOOT_HEADER {
 	UINT32 magic;
@@ -120,12 +125,99 @@ int main(int argc, char** argv)
 	printf("Multiboot header has been added successfully.\n");
 
 
-	//Use Qemu
-	char command[0x200];
-	snprintf(command, sizeof(command), "\"C:\\Program Files\\qemu\\qemu-system-i386.exe\" -kernel \"%s\"", argv[1]);
-	CreateProcessAndWait((char*)command);
+	if (InsertKernelToImageFile(argv[1]))
+	{
+		// Use Qemu
+			char command[0x200];
+		snprintf(command, sizeof(command), "\"qemu-system-i386.exe\" -kernel \"%s\"", argv[1]);
+		CreateProcessAndWait((char*)command);
+	}
+	else
+	{
+		printf("kernel insert fail.\n");
+	}
 
-
-	
 	return FALSE;
+}
+
+FILE* g_rawDisk = 0;
+FATFS g_fat32_system;
+
+
+DWORD get_fattime(void)
+{
+	SYSTEMTIME tm;
+
+	/* Get local time */
+	GetLocalTime(&tm);
+
+	/* Pack date and time into a DWORD variable */
+	return   (tm.wYear - 1980) << 25 | tm.wMonth << 21 | tm.wDay << 16 | tm.wHour << 11 | tm.wMinute << 5 | tm.wSecond >> 1;
+}
+
+
+bool InsertKernelToImageFile(const char* kernel_name)
+{
+
+	FRESULT result = f_mount(&g_fat32_system, "", 1);
+
+	if (result != FR_OK)
+	{
+
+		printf("fat32 initialization fail.\n");
+		return false;
+	}
+
+	FIL file;
+	FRESULT res = f_open(&file, kernel_name, FA_READ);
+
+	if (res != FR_OK)
+	{
+		printf("Kernel Image Open Fail : %s %d\n", kernel_name, res);
+		return false;
+	}
+
+	return true;
+	
+}
+
+extern "C" BYTE IMG_disk_initialize()
+{
+	g_rawDisk = fopen("kernel.img", "rb+");
+
+	if (g_rawDisk == 0)
+		return 1;
+	
+	return 0;
+}
+
+extern "C" BYTE IMG_disk_read(BYTE * buff, DWORD sector, UINT count)
+{
+	fseek(g_rawDisk, sector * 512, SEEK_SET);
+	size_t readCnt = fread(buff, 1, count * 512, g_rawDisk);
+
+	if (readCnt != count * 512)
+	{
+		return 1;
+	}
+
+	return 0;
+}
+
+extern "C" BYTE IMG_disk_write(const BYTE * buff, DWORD sector, UINT count)
+{
+	fseek((FILE*)g_rawDisk, sector * 512, SEEK_SET);
+	size_t writeCnt = fwrite(buff, 1, count * 512, (FILE*)g_rawDisk);
+
+	if (writeCnt != count * 512)
+	{
+		return 1;
+	}
+
+	return 0;
+}
+
+extern "C" BYTE IMG_disk_status()
+{
+	return 0;
 }
