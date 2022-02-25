@@ -127,6 +127,8 @@ int main(int argc, char** argv)
 
 	if (InsertKernelToImageFile(argv[1]))
 	{
+		printf("kernel has been inserted to image file successfully.\n");
+
 		// Use Qemu
 			char command[0x200];
 		snprintf(command, sizeof(command), "\"qemu-system-i386.exe\" -kernel \"%s\"", argv[1]);
@@ -159,17 +161,22 @@ DWORD get_fattime(void)
 bool InsertKernelToImageFile(const char* kernel_name)
 {
 
+	FILE* src_kernel = fopen(kernel_name, "rb");
+
+	if (src_kernel == 0)
+		return false;
+
 	FRESULT result = f_mount(&g_fat32_system, "", 1);
 
 	if (result != FR_OK)
 	{
 
-		printf("fat32 initialization fail.\n");
+		printf("fat32 initialization fail : %d\n", result);
 		return false;
 	}
 
 	FIL file;
-	FRESULT res = f_open(&file, kernel_name, FA_READ);
+	FRESULT res = f_open(&file, kernel_name, FA_WRITE);
 
 	if (res != FR_OK)
 	{
@@ -177,16 +184,46 @@ bool InsertKernelToImageFile(const char* kernel_name)
 		return false;
 	}
 
+	char buffer[512];
+	size_t bytes;
+
+	UINT src_filesize = 0;
+	UINT des_filesize = 0;
+
+	while (0 < (bytes = fread(buffer, 1, 512 * sizeof(char), src_kernel)))
+	{
+		UINT written = 0;
+		f_write(&file, buffer, sizeof(buffer), &written);		
+
+		src_filesize += bytes;
+		des_filesize += written;
+	}
+
+	fclose(src_kernel);
+	f_close(&file);
+
+
+	if (src_filesize != des_filesize)
+		return false;
+
 	return true;
 	
 }
+#include <direct.h>
+#define GetCurrentDir _getcwd
+
 
 extern "C" BYTE IMG_disk_initialize()
 {
+	char buf[256];
+
+	char* cwd = _getcwd(buf, 256);	
+
 	g_rawDisk = fopen("kernel.img", "rb+");
 
 	if (g_rawDisk == 0)
 		return 1;
+	
 	
 	return 0;
 }

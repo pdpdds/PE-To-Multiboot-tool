@@ -74,7 +74,7 @@ DSTATUS disk_initialize (
 )
 {
 	int result;
-
+	
 	switch (pdrv) {
 	/*case DEV_RAM:
 		result = RAM_disk_initialize();
