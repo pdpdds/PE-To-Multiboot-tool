@@ -341,3 +341,6 @@ healthchecksdb
 
 *.exe
 *.img
+.vs
+Debug
+Intermediate

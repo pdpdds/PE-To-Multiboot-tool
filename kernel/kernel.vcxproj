@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="asm\alldiv.c" />
+    <ClCompile Include="asm\allmul.c" />
+    <ClCompile Include="asm\allrem.c" />
+    <ClCompile Include="asm\allshr.c" />
+    <ClCompile Include="asm\aullshr.c" />
+    <ClCompile Include="cstd.c" />
+    <ClCompile Include="drivers\Beep.cpp" />
+    <ClCompile Include="drivers\DevFS.cpp" />
+    <ClCompile Include="drivers\Device.cpp" />
+    <ClCompile Include="drivers\FAT.cpp" />
+    <ClCompile Include="drivers\Floppy.cpp" />
+    <ClCompile Include="drivers\IDE.cpp" />
+    <ClCompile Include="drivers\Keyboard.cpp" />
+    <ClCompile Include="drivers\Matrox.cpp" />
+    <ClCompile Include="drivers\NE2000.cpp" />
+    <ClCompile Include="drivers\NetbootFS.cpp" />
+    <ClCompile Include="drivers\PCI.cpp" />
+    <ClCompile Include="drivers\RootFS.cpp" />
+    <ClCompile Include="drivers\VGAGraphics.cpp" />
+    <ClCompile Include="drivers\VGAText.cpp" />
+    <ClCompile Include="kernel\AddressSpace.cpp" />
+    <ClCompile Include="kernel\Alloc.cpp" />
+    <ClCompile Include="kernel\arch\x86\HardwareTimer.cpp" />
+    <ClCompile Include="kernel\arch\x86\interrupt.cpp" />
+    <ClCompile Include="kernel\arch\x86\PhysicalMap.cpp" />
+    <ClCompile Include="kernel\arch\x86\Processor.cpp" />
+    <ClCompile Include="kernel\arch\x86\SerialDebug.cpp" />
+    <ClCompile Include="kernel\arch\x86\ThreadContext.cpp" />
+    <ClCompile Include="kernel\AVLTree.cpp" />
+    <ClCompile Include="kernel\Dispatcher.cpp" />
+    <ClCompile Include="kernel\FileDescriptor.cpp" />
+    <ClCompile Include="kernel\FileSystem.cpp" />
+    <ClCompile Include="kernel\HandleTable.cpp" />
+    <ClCompile Include="kernel\Image.cpp" />
+    <ClCompile Include="kernel\InterruptHandler.cpp" />
+    <ClCompile Include="kernel\KernelDebug.cpp" />
+    <ClCompile Include="kernel\Lock.cpp" />
+    <ClCompile Include="kernel\main.cpp" />
+    <ClCompile Include="kernel\Page.cpp" />
+    <ClCompile Include="kernel\PageCache.cpp" />
+    <ClCompile Include="kernel\Resource.cpp" />
+    <ClCompile Include="kernel\Runtime-GCC.cpp" />
+    <ClCompile Include="kernel\Scheduler.cpp" />
+    <ClCompile Include="kernel\Semaphore.cpp" />
+    <ClCompile Include="kernel\SwapSpace.cpp" />
+    <ClCompile Include="kernel\SystemCall.cpp" />
+    <ClCompile Include="kernel\Team.cpp" />
+    <ClCompile Include="kernel\Thread.cpp" />
+    <ClCompile Include="kernel\Timer.cpp" />
+    <ClCompile Include="kernel\VNode.cpp" />
+    <ClCompile Include="lib\c\atoi.c" />
+    <ClCompile Include="lib\c\ctype.c" />
+    <ClCompile Include="lib\c\malloc.c" />
+    <ClCompile Include="lib\c\rand.c" />
+    <ClCompile Include="lib\c\snprintf.c" />
+    <ClCompile Include="lib\c\strerror.c" />
+    <ClCompile Include="lib\c\string.c" />
+    <ClCompile Include="lib\c\vsnprintf.c" />
+    <ClCompile Include="lib\user\sbrk.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="drivers\Device.h" />
+    <ClInclude Include="drivers\PCI.h" />
+    <ClInclude Include="kernel\AddressSpace.h" />
+    <ClInclude Include="kernel\APC.h" />
+    <ClInclude Include="kernel\arch\x86\memory_layout.h" />
+    <ClInclude Include="kernel\Area.h" />
+    <ClInclude Include="kernel\AVLTree.h" />
+    <ClInclude Include="kernel\BackingStore.h" />
+    <ClInclude Include="kernel\CircularBuffer.h" />
+    <ClInclude Include="kernel\Dispatcher.h" />
+    <ClInclude Include="kernel\FileDescriptor.h" />
+    <ClInclude Include="kernel\FileSystem.h" />
+    <ClInclude Include="kernel\HandleTable.h" />
+    <ClInclude Include="kernel\Image.h" />
+    <ClInclude Include="kernel\InterruptHandler.h" />
+    <ClInclude Include="kernel\KernelDebug.h" />
+    <ClInclude Include="kernel\List.h" />
+    <ClInclude Include="kernel\Lock.h" />
+    <ClInclude Include="kernel\Page.h" />
+    <ClInclude Include="kernel\PageCache.h" />
+    <ClInclude Include="kernel\Queue.h" />
+    <ClInclude Include="kernel\Resource.h" />
+    <ClInclude Include="kernel\Scheduler.h" />
+    <ClInclude Include="kernel\Semaphore.h" />
+    <ClInclude Include="kernel\SwapSpace.h" />
+    <ClInclude Include="kernel\SystemCall.h" />
+    <ClInclude Include="kernel\Team.h" />
+    <ClInclude Include="kernel\Thread.h" />
+    <ClInclude Include="kernel\Timer.h" />
+    <ClInclude Include="kernel\VNode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="core_asm.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f win32 core_asm.asm</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">core_asm.obj</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="asm\aulldvrm.asm" />
+    <MASM Include="asm\chkstk.asm" />
+    <MASM Include="asm\lldvrm.asm" />
+    <MASM Include="asm\llshl.asm" />
+    <MASM Include="asm\ulldiv.asm" />
+    <MASM Include="asm\ullrem.asm" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{88FE838A-58E8-47B6-AD4D-6F917C302AB6}</ProjectGuid>
+    <RootNamespace>Kernel</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>kernel</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)\</IntDir>
+    <ExtensionsToDeleteOnClean>*.exp *.obj%3b*.ilk%3b*.tlb%3b*.tli%3b*.tlh%3b*.tmp%3b*.rsp%3b*.pgc%3b*.pgd%3b$(TargetPath)</ExtensionsToDeleteOnClean>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>./kernel;./include;./kernel/arch/x86;./</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SKYOS32;_MSC_VER=1920</PreprocessorDefinitions>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <StringPooling>
+      </StringPooling>
+      <ExceptionHandling>false</ExceptionHandling>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AssemblerOutput />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+      <DisableSpecificWarnings>4457;4189;4100;4702;4102;4244;4819</DisableSpecificWarnings>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../runtime/debug;../../debug</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>../Debug/launcher.map</MapFileName>
+      <SubSystem>Console</SubSystem>
+      <Driver>NotSet</Driver>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <FunctionOrder>
+      </FunctionOrder>
+      <EntryPointSymbol>main</EntryPointSymbol>
+      <NoEntryPoint>false</NoEntryPoint>
+      <BaseAddress>0x00100000</BaseAddress>
+      <FixedBaseAddress>
+      </FixedBaseAddress>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <FullProgramDatabaseFile>
+      </FullProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <AddModuleNamesToAssembly>
+      </AddModuleNamesToAssembly>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <AssemblyLinkResource>
+      </AssemblyLinkResource>
+      <SectionAlignment>
+      </SectionAlignment>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalOptions>/FILEALIGN:4096 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Inputs>
+      </Inputs>
+    </CustomBuildStep>
+    <CustomBuild>
+      <Outputs>
+      </Outputs>
+    </CustomBuild>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <DisableSpecificWarnings>4457</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

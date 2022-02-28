@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{8313071b-3d05-4f54-b3be-0547d4f09f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\arch">
+      <UniqueIdentifier>{f54a9912-9eb5-4a19-ab6a-5472d637df7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{ca1abc5b-4581-46b1-849f-2b4d4c90adf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="driver">
+      <UniqueIdentifier>{d6b5781c-00b1-45e0-b1e7-3654bb880fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="asm">
+      <UniqueIdentifier>{bf8401db-7be2-48fc-8acc-7cdf43106023}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="kernel\AddressSpace.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Alloc.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\AVLTree.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Dispatcher.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\FileDescriptor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\FileSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\HandleTable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Image.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\InterruptHandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\KernelDebug.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Lock.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Page.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\PageCache.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Resource.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Runtime-GCC.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Scheduler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Semaphore.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\SwapSpace.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\SystemCall.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Team.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Thread.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Timer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\VNode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\arch\x86\HardwareTimer.cpp">
+      <Filter>src\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\arch\x86\interrupt.cpp">
+      <Filter>src\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\arch\x86\PhysicalMap.cpp">
+      <Filter>src\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\arch\x86\Processor.cpp">
+      <Filter>src\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\arch\x86\SerialDebug.cpp">
+      <Filter>src\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\arch\x86\ThreadContext.cpp">
+      <Filter>src\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\c\atoi.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\c\ctype.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\c\malloc.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\c\rand.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\c\snprintf.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\c\strerror.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\c\string.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\c\vsnprintf.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\Beep.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\DevFS.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\Device.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\FAT.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\Floppy.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\IDE.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\Keyboard.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\Matrox.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\NE2000.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\NetbootFS.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\PCI.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\RootFS.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\VGAGraphics.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\VGAText.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\alldiv.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\allmul.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\allrem.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\allshr.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\aullshr.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="cstd.c" />
+    <ClCompile Include="lib\user\sbrk.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="kernel\AddressSpace.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\APC.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Area.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\AVLTree.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\BackingStore.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\CircularBuffer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Dispatcher.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\FileDescriptor.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\FileSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\HandleTable.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Image.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\InterruptHandler.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\KernelDebug.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\List.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Lock.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Page.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\PageCache.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Queue.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Resource.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Scheduler.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Semaphore.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\SwapSpace.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\SystemCall.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Team.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Thread.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Timer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\VNode.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="drivers\Device.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="drivers\PCI.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\arch\x86\memory_layout.h">
+      <Filter>src\arch</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="core_asm.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="asm\aulldvrm.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\chkstk.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\lldvrm.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\llshl.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\ulldiv.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\ullrem.asm">
+      <Filter>asm</Filter>
+    </MASM>
+  </ItemGroup>
+</Project>
