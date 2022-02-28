@@ -1,4 +1,3 @@
-#include "windef.h"
 #include <stdint.h>
 
 //! my implimentation of _aullshr
